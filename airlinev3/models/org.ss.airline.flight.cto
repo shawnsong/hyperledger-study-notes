@@ -1,0 +1,16 @@
+namespace org.ss.airline.flight
+
+import org.ss.airline.aircraft.Aircraft
+
+asset Flight identified by flightNumber {
+  o   String    flightNumber    
+  o   Route     route
+  o   String[]  aliasFlightNumber
+  --> Aircraft  aircraft  optional
+}
+
+concept Route {
+  o String origin       regex=/[A-Z]{3}/
+  o String destination  regex=/[A-Z]{3}/
+  o DateTime schedule
+}

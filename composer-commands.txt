@@ -29,3 +29,8 @@ composer network upgrade -c PeerAdmin@hlfv1 -n test-bna -V 0.0.2
 
 # start composer rest server
 composer-rest-server
+
+# create archive files to deploy to playground so it's easier to test
+# cd to the root of the project
+mkdir dist
+composer archive create -a dist/airlinev3.bna --sourceType dir --sourceName .
