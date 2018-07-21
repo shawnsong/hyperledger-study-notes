@@ -1,0 +1,31 @@
+# create business network application archive
+composer archive create -t dir -n ../
+
+# install an business application network
+composer network install -a test-bna@0.0.1.bna -c PeerAdmin@hlfv1
+
+# to start a business application network on Fabric runtime
+composer network start PeerAdmin@hlfv1 -n test-bna -V 0.0.1 -A admin -S adminpw
+
+# when network is started, a card is generated for business administrators. The business administrator 
+# needs to import the card 
+composer card import -f ./admin@test-bna.card
+
+# list composer card
+composer card list
+
+
+# to test if a network is working
+composer network ping -c admin@test-bna
+# to list a network
+composer network list -c admin@test-bna
+
+# upgrading the business network
+1. Create Archive for the new version of BNA
+2. Install the new version of archive
+3. List the network application
+
+composer network upgrade -c PeerAdmin@hlfv1 -n test-bna -V 0.0.2
+
+# start composer rest server
+composer-rest-server
