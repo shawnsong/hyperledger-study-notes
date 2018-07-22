@@ -2,8 +2,9 @@ namespace org.ss.airline.flight
 
 import org.ss.airline.aircraft.Aircraft
 
-asset Flight identified by flightNumber {
+asset Flight identified by flightId {
   o   String    flightNumber    
+  o   String    flightId    regex = /[A-Z]{3}(-[0-9]{2}){3}/
   o   Route     route
   o   String[]  aliasFlightNumber
   --> Aircraft  aircraft  optional
@@ -13,4 +14,15 @@ concept Route {
   o String origin       regex=/[A-Z]{3}/
   o String destination  regex=/[A-Z]{3}/
   o DateTime schedule
+}
+
+transaction CreateFlight {
+  o String origin
+  o String destination
+  o String flightNumber
+  o DateTime schedule
+}
+
+event FlightCreated {
+  o String flightId
 }
